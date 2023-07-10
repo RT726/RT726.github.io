@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>信息表单</title>
+  <style>
+    /* 样式可以根据您的需求进行自定义 */
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .form-group .error-message {
+      color: red;
+      display: block;
+    }
+
+    .form-group button {
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>信息表单</h2>
+    <div class="form-group">
+      <label for="name">姓名:</label>
+      <input type="text" id="name" placeholder="请输入姓名">
+      <span id="name-error" class="error-message"></span>
+    </div>
+    <div class="form-group">
+      <label for="age">年龄:</label>
+      <input type="text" id="age" placeholder="请输入年龄">
+      <span id="age-error" class="error-message"></span>
+    </div>
+    <div class="form-group">
+      <label for="gender">性别:</label>
+      <input type="text" id="gender" placeholder="请输入性别">
+      <span id="gender-error" class="error-message"></span>
+    </div>
+    <div class="form-group">
+      <label for="contact">联系方式:</label>
+      <input type="text" id="contact" placeholder="请输入联系方式">
+      <span id="contact-error" class="error-message"></span>
+    </div>
+    <div class="form-group">
+      <button onclick="submitForm()">提交</button>
+    </div>
+  </div>
+
+  <script>
+    function submitForm() {
+      // 获取输入字段的值
+      var name = document.getElementById('name').value;
+      var age = document.getElementById('age').value;
+      var gender = document.getElementById('gender').value;
+      var contact = document.getElementById('contact').value;
+
+      // 表单验证
+      var isValid = true;
+
+      if (name === '') {
+        isValid = false;
+        document.getElementById('name').style.borderColor = 'red';
+        document.getElementById('name-error').textContent = '请填写姓名';
+      } else {
+        document.getElementById('name').style.borderColor = '';
+        document.getElementById('name-error').textContent = '';
+      }
+
+      if (age === '') {
+        isValid = false;
+        document.getElementById('age').style.borderColor = 'red';
+        document.getElementById('age-error').textContent = '请填写年龄';
+      } else {
+        document.getElementById('age').style.borderColor = '';
+        document.getElementById('age-error').textContent = '';
+      }
+
+      if (gender === '') {
+        isValid = false;
+        document.getElementById('gender').style.borderColor = 'red';
+        document.getElementById('gender-error').textContent = '请填写性别';
+      } else {
+        document.getElementById('gender').style.borderColor = '';
+        document.getElementById('gender-error').textContent = '';
+      }
+
+      if (contact === '') {
+        isValid = false;
+        document.getElementById('contact').style.borderColor = 'red';
+        document.getElementById('contact-error').textContent = '请填写联系方式';
+      } else {
+        document.getElementById('contact').style.borderColor = '';
+        document.getElementById('contact-error').textContent = '';
+      }
+
+      // 检查是否通过验证
+      if (!isValid) {
+        return; // 如果有字段未通过验证，则停止表单提交
+      }
+
+      // 构造包含信息的对象
+      var formData = {
+        name: name,
+        age: age,
+        gender: gender,
+        contact: contact
+      };
+
+      // 进一步处理表单数据，例如发送到服务器
+
+      // 示例：在控制台打印表单数据
+      console.log(formData);
+    }
+  </script>
+</body>
+</html>
